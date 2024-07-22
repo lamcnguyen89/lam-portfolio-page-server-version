@@ -9,9 +9,14 @@ const PostItem = ({ post: { _id, project, date, articlebody } }) => (
   <>
     <h4>{project}</h4>
     <div>Posted on {formatDate(date)}</div>
-
-    <div></div>
-    <div></div>
+    <div>
+      {articlebody.map((articlebody) => (
+        <>
+          <p>{articlebody.articlebodyimage}</p>
+          <p>{articlebody.articlebodytext}</p>
+        </>
+      ))}
+    </div>
   </>
 );
 
