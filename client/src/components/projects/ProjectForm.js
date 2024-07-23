@@ -17,6 +17,7 @@ const ProjectForm = ({ addPost }) => {
 
   const onChange = (e) => {
     setProjectData({ ...projectData, [e.target.name]: e.target.value });
+
     console.log(projectData);
   };
 
@@ -30,8 +31,8 @@ const ProjectForm = ({ addPost }) => {
         onSubmit={(e) => {
           console.log(setProjectData);
           e.preventDefault();
-          addPost({ project, articlebodytext,articlebodyimage });
-          //setProjectData("");
+          addPost({ project, articlebodytext, articlebodyimage });
+          setProjectData("");
         }}
       >
         <textarea
