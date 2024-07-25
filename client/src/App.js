@@ -9,7 +9,6 @@ import ProfileForm from "./components/profile-forms/ProfileForm";
 import { Contact } from "./components/Contact";
 import Projects from "./components/projects/Projects";
 import { NewProject } from "./components/NewProject";
-import { ExistingProjects } from "./components/ExistingProjects";
 import AddEducation from "./components/profile-forms/AddEducation";
 import AddExperience from "./components/profile-forms/AddExperience";
 import Alert from "./components/layout/Alert";
@@ -67,10 +66,6 @@ export const App = () => {
               <Route
                 path="newproject"
                 element={<PrivateRoute component={NewProject} />}
-              />
-              <Route
-                path="existingproject"
-                element={<PrivateRoute component={ExistingProjects} />}
               />
             </Routes>
           </section>

@@ -12,11 +12,6 @@ export const AdminDashboardActions = () => {
         </div>
         <div className="col">
           <button>
-            <Link to="/existingproject">Existing Projects</Link>
-          </button>
-        </div>
-        <div className="col">
-          <button>
             <Link to="/edit-profile">Edit Profile</Link>
           </button>
         </div>

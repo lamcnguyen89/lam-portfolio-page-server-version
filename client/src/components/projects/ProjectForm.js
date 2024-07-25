@@ -4,11 +4,18 @@ import { connect } from "react-redux";
 import { addPost } from "../../actions/post";
 import { Link, useMatch, useNavigate } from "react-router-dom";
 
-const initialState = {
-  project: "",
-  articlebodytext: "",
-  articlebodyimage: "",
-};
+function convertToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+}
 
 const ProjectForm = ({ addPost }) => {
   const [projectData, setProjectData] = useState("");
@@ -19,6 +26,13 @@ const ProjectForm = ({ addPost }) => {
     setProjectData({ ...projectData, [e.target.name]: e.target.value });
 
     console.log(projectData);
+  };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    console.log(base64);
+    setProjectData({ ...projectData, [e.target.name]: base64 });
   };
 
   return (
@@ -53,13 +67,13 @@ const ProjectForm = ({ addPost }) => {
           onChange={onChange}
           required
         />
-        <textarea
+        <input
           name="articlebodyimage"
-          type="text"
-          placeholder="Add Image"
-          value={articlebodyimage}
-          onChange={onChange}
-          required
+          label="Image"
+          type="file"
+          id="file-upload"
+          accept=".jpeg, .png, .jpg"
+          onChange={(e) => handleFileUpload(e)}
         />
 
         <input type="submit" className="btn btn-dark my-1" value="Submit" />
@@ -73,22 +87,3 @@ ProjectForm.propTypes = {
 };
 
 export default connect(null, { addPost })(ProjectForm);
-/*
-<textarea
-name="project"
-cols="30"
-rows="5"
-placeholder="Input Post "
-value={project}
-onChange={onChange}
-required
-/>
-<textarea
-name="articlebodyimage"
-type="text"
-placeholder="Add Image"
-value={articlebodyimage}
-onChange={onChange}
-required
-/>
-*/

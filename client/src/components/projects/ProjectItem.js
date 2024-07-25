@@ -12,7 +12,7 @@ const PostItem = ({ post: { _id, project, date, articlebody } }) => (
     <div>
       {articlebody.map((articlebody) => (
         <>
-          <p>{articlebody.articlebodyimage}</p>
+          <img src={articlebody.articlebodyimage} />
           <p>{articlebody.articlebodytext}</p>
         </>
       ))}
