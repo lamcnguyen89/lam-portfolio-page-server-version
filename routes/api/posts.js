@@ -13,23 +13,21 @@ const checkObjectId = require("../../middleware/checkObjectId");
 router.post("/", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
-
-    // console.log(req.body.articlebodytext);
-    // console.log(req.body.articlebodyimage);
+    //console.log(req.body);
+    //console.log(req.body.projectData);
+    // console.log(req.body.projectData[0].project); // Gives the Value for the Key Project
+    //console.log(req.body.projectData[0].articlebody); // Gives the Values for the Key articlebody
 
     // Build a post
+
     const newPost = new Post({
       user: req.user.id,
-      project: req.body.project,
-      articlebody: {
-        articlebodytext: req.body.articlebodytext,
-        articlebodyimage: req.body.articlebodyimage,
-      },
+      project: req.body.projectData[0].project,
+      articlebody: req.body.projectData[0].articlebody,
     });
+
     console.log(newPost);
-
     const post = await newPost.save();
-
     res.json(post);
   } catch (err) {
     console.error(err.message);

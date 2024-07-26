@@ -16,10 +16,10 @@ const PostSchema = new Schema({
   },
   articlebody: [
     {
-      articlebodytext: {
+      articlebodyimage: {
         type: String,
       },
-      articlebodyimage: {
+      articlebodytext: {
         type: String,
       },
     },
@@ -27,4 +27,3 @@ const PostSchema = new Schema({
 });
 
 module.exports = mongoose.model("post", PostSchema);
-
