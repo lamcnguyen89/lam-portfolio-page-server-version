@@ -17,22 +17,56 @@ function convertToBase64(file) {
   });
 }
 
+const initialState = [
+  {
+    project: "",
+    articlebody: [
+      {
+        articlebodyimage: "",
+        articlebodytext: "",
+      },
+    ],
+  },
+];
 const ProjectForm = ({ addPost }) => {
-  const [projectData, setProjectData] = useState("");
+  const [projectData, setProjectData] = useState(initialState);
 
-  const { project, articlebodytext, articlebodyimage } = projectData;
+  const addFields = () => {
+    let object = {
+      articlebodyimage: "",
+      articlebodytext: "",
+    };
 
-  const onChange = (e) => {
-    setProjectData({ ...projectData, [e.target.name]: e.target.value });
-
+    let data = [...projectData];
+    data[0].articlebody.push(object);
+    setProjectData(data);
     console.log(projectData);
   };
 
-  const handleFileUpload = async (e) => {
+  const removeFields = async (index) => {
+    let data = await [...projectData];
+    data[0].articlebody.splice(index, 1);
+    setProjectData(data);
+  };
+
+  const onChange = async (e) => {
+    let data = await [...projectData];
+    data[0].project = e.target.value;
+    setProjectData(data);
+  };
+
+  const handleFileUpload = async (e, index) => {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
-    console.log(base64);
-    setProjectData({ ...projectData, [e.target.name]: base64 });
+    let data = [...projectData];
+    data[0].articlebody[index][e.target.name] = base64;
+    setProjectData(data);
+  };
+
+  const handleFormChange = (e, index) => {
+    let data = [...projectData];
+    data[0].articlebody[index][e.target.name] = e.target.value;
+    setProjectData(data);
   };
 
   return (
@@ -43,41 +77,46 @@ const ProjectForm = ({ addPost }) => {
       <form
         className="form my-1"
         onSubmit={(e) => {
-          console.log(setProjectData);
           e.preventDefault();
-          addPost({ project, articlebodytext, articlebodyimage });
-          setProjectData("");
+          addPost({ projectData });
+          setProjectData(initialState);
         }}
       >
         <textarea
           name="project"
           cols="30"
           rows="5"
-          placeholder="Input Post "
-          value={project}
+          placeholder="Project Name"
+          value={projectData.project}
           onChange={onChange}
-          required
-        />
-        <textarea
-          name="articlebodytext"
-          cols="30"
-          rows="5"
-          placeholder="Set Project Name"
-          value={articlebodytext}
-          onChange={onChange}
-          required
-        />
-        <input
-          name="articlebodyimage"
-          label="Image"
-          type="file"
-          id="file-upload"
-          accept=".jpeg, .png, .jpg"
-          onChange={(e) => handleFileUpload(e)}
         />
 
+        {projectData[0].articlebody.map((form, index) => {
+          return (
+            <div key={index}>
+              <textarea
+                name="articlebodytext"
+                cols="30"
+                rows="5"
+                placeholder="Add Post Text"
+                value={form.articlebodytext}
+                onChange={(e) => handleFormChange(e, index)}
+              />
+              <input
+                name="articlebodyimage"
+                label="Image"
+                type="file"
+                id="file-upload"
+                accept=".jpeg, .png, .jpg"
+                onChange={(e) => handleFileUpload(e, index)}
+              />
+              <button onClick={() => removeFields(index)}>Remove</button>
+            </div>
+          );
+        })}
         <input type="submit" className="btn btn-dark my-1" value="Submit" />
       </form>
+      <button onClick={addFields}>Add More..</button>
     </div>
   );
 };
