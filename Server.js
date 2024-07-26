@@ -1,16 +1,23 @@
 // Create a simple Express Server for handling Web Requests
 const express = require("express");
+const bodyParser = require("body-parser");
 const connectDB = require("./config/db");
 
 const app = express();
+app.use(bodyParser.json({ limit: "50mb" }));
 
 // Connect Database
 connectDB();
 
 // Init Middleware
-app.use(express.json({ extended: false }));
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ limit: "50mb" }));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+    limit: "50mb",
+    parameterLimit: 50000,
+  })
+);
+//app.use(express.json({ extended: false }));
 
 // Create a single endpoint to test if the server works
 app.get("/", (req, res) => res.send("API Running"));
