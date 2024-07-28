@@ -38,14 +38,14 @@ export const App = () => {
             <Alert />
             <Routes>
               <Route path="/" element={<Landing />} />
-              <Route path="admin*" element={<AdminLogin />} />
+              <Route path="admin" element={<AdminLogin />} />
               <Route
                 path="admindashboard"
                 element={<PrivateRoute component={AdminDashboard} />}
               />
               <Route path="aboutme" element={<AboutMe />} />
               <Route path="contact" element={<Contact />} />
-              <Route path="projects*" element={<Projects />} />
+              <Route path="projects" element={<Projects />} />
 
               <Route
                 path="create-profile"

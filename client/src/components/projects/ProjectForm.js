@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPost } from "../../actions/post";
 import { Link, useMatch, useNavigate } from "react-router-dom";
+import { ProjectCategories } from "./ProjectCategories";
 
 function convertToBase64(file) {
   return new Promise((resolve, reject) => {
@@ -82,14 +83,14 @@ const ProjectForm = ({ addPost }) => {
           setProjectData(initialState);
         }}
       >
-        <textarea
-          name="project"
-          cols="30"
-          rows="5"
-          placeholder="Project Name"
-          value={projectData.project}
-          onChange={onChange}
-        />
+        <select name="project" value={projectData.project} onChange={onChange}>
+          <option>* Select Project Category</option>
+          {ProjectCategories.map((category, index) => (
+            <option value={category} key={index}>
+              {category}
+            </option>
+          ))}
+        </select>
 
         {projectData[0].articlebody.map((form, index) => {
           return (
