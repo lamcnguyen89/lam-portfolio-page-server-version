@@ -51,7 +51,7 @@ router.get("/", async (req, res) => {
 // @route    GET api/posts/project
 // @desc     Get post by project category
 // @access   Public
-router.get("/projects", async (req, res) => {
+router.get("/project", async (req, res) => {
   try {
     const posts = await Post.find({project: (req.body.project)}).sort({ date: -1 });
     res.json(posts);

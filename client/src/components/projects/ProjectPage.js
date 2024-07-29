@@ -7,8 +7,7 @@ import ProjectItem from "./ProjectItem";
 import InfiniteScroll from "react-infinite-scroller";
 import { ProjectCategories } from "./ProjectCategories";
 
-
-const Projects = ({ getPosts, post: { posts, loading } }) => {
+const ProjectPage = ({ getPosts, category, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
@@ -17,14 +16,7 @@ const Projects = ({ getPosts, post: { posts, loading } }) => {
 
   return (
     <section className="container">
-      <div>
-        {ProjectCategories.map((category) => (
-          <>
-            <button>{category}</button>
-            <br />
-          </>
-        ))}
-      </div>
+      <h1>{category}</h1>
       {loading ? (
         <Spinner />
       ) : (
@@ -42,7 +34,7 @@ const Projects = ({ getPosts, post: { posts, loading } }) => {
   );
 };
 
-Projects.propTypes = {
+ProjectPage.propTypes = {
   getPosts: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
 };
@@ -51,7 +43,7 @@ const mapStateToProps = (state) => ({
   post: state.post,
 });
 
-export default connect(mapStateToProps, { getPosts })(Projects);
+export default connect(mapStateToProps, { getPosts })(ProjectPage);
 
 /*
   const itemsPerPage = 3;

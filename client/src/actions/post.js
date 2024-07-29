@@ -6,6 +6,7 @@ import {
   DELETE_POST,
   ADD_POST,
   GET_POST,
+  GET_PROJECT,
 } from "./types";
 
 /*
@@ -22,6 +23,23 @@ export const getPosts = () => async (dispatch) => {
 
     dispatch({
       type: GET_POSTS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get posts by project name
+export const getProject = () => async (dispatch) => {
+  try {
+    const res = await api.get("/posts/project");
+
+    dispatch({
+      type: GET_PROJECT,
       payload: res.data,
     });
   } catch (err) {

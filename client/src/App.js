@@ -7,7 +7,7 @@ import AdminLogin from "./components/AdminLogin";
 import AdminDashboard from "./components/AdminDashboard";
 import ProfileForm from "./components/profile-forms/ProfileForm";
 import { Contact } from "./components/Contact";
-import Projects from "./components/projects/Projects";
+import ProjectLanding from "./components/projects/ProjectLanding";
 import { NewProject } from "./components/NewProject";
 import AddEducation from "./components/profile-forms/AddEducation";
 import AddExperience from "./components/profile-forms/AddExperience";
@@ -45,7 +45,7 @@ export const App = () => {
               />
               <Route path="aboutme" element={<AboutMe />} />
               <Route path="contact" element={<Contact />} />
-              <Route path="projects" element={<Projects />} />
+              <Route path="projectlanding" element={<ProjectLanding />} />
 
               <Route
                 path="create-profile"
