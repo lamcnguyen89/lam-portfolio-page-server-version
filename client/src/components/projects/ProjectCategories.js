@@ -1,5 +1,5 @@
 export const ProjectCategories = [
-  "Porn Induced Erectile Dysfunction",
+  "Virtual Reality",
   "Instinctive Shooting",
   "Robotics",
   "Machine Learning",

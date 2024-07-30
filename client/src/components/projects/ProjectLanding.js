@@ -5,7 +5,7 @@ import { ProjectCategories } from "./ProjectCategories";
 //
 
 const ProjectLanding = () => {
-  const [currentCategory, setCurrentCategory] = useState("null");
+  const [currentCategory, setCurrentCategory] = useState("");
 
   return (
     <>

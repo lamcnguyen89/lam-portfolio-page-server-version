@@ -48,20 +48,21 @@ router.get("/", async (req, res) => {
   }
 });
 
-// @route    GET api/posts/project
+// @route    GET api/posts/project/category
 // @desc     Get post by project category
 // @access   Public
-router.get("/project", async (req, res) => {
+router.get("/project/:category", async (req, res) => {
+  console.log(req.params.category);
   try {
-    const posts = await Post.find({project: (req.body.project)}).sort({ date: -1 });
+    const posts = await Post.find({ project: req.params.category }).sort({
+      date: -1,
+    });
     res.json(posts);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
-
-
 
 // @route    GET api/posts/:id
 // @desc     Get post by ID

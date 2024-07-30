@@ -20,6 +20,7 @@ import {
 export const getPosts = () => async (dispatch) => {
   try {
     const res = await api.get("/posts");
+    console.log(res);
 
     dispatch({
       type: GET_POSTS,
@@ -34,9 +35,12 @@ export const getPosts = () => async (dispatch) => {
 };
 
 // Get posts by project name
-export const getProject = () => async (dispatch) => {
+export const getProject = (category) => async (dispatch) => {
+  console.log(`Action started`);
+  //console.log(category);
   try {
-    const res = await api.get("/posts/project");
+    const res = await api.get(`/posts/project/${category}`);
+    console.log(res);
 
     dispatch({
       type: GET_PROJECT,
