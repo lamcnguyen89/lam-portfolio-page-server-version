@@ -6,16 +6,25 @@ import { ProjectCategories } from "./ProjectCategories";
 
 const ProjectLanding = () => {
   const [currentCategory, setCurrentCategory] = useState("");
+  const [seed, setSeed] = useState(1);
 
   return (
     <>
       {ProjectCategories.map((category, index) => (
-        <button key={index} onClick={() => setCurrentCategory(category)}>
+        <button
+          key={index}
+          onClick={() => {
+            setSeed(Math.random());
+            setCurrentCategory(category);
+          }}
+        >
           {category}
         </button>
       ))}
 
-      {currentCategory !== "" && <ProjectPage category={currentCategory} />}
+      {currentCategory !== "" && (
+        <ProjectPage key={seed} category={currentCategory} />
+      )}
     </>
   );
 };
