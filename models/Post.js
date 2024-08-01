@@ -9,7 +9,9 @@ const PostSchema = new Schema({
     type: String,
     // required: true,
   },
-
+  title: {
+    type: String,
+  },
   date: {
     type: Date,
     default: Date.now,

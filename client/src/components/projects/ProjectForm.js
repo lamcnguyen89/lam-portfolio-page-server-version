@@ -21,6 +21,7 @@ function convertToBase64(file) {
 const initialState = [
   {
     project: "",
+    title: "",
     articlebody: [
       {
         articlebodyimage: "",
@@ -50,9 +51,15 @@ const ProjectForm = ({ addPost }) => {
     setProjectData(data);
   };
 
-  const onChange = async (e) => {
+  const onChangeProject = async (e) => {
     let data = await [...projectData];
     data[0].project = e.target.value;
+    setProjectData(data);
+  };
+
+  const onChangeTitle = async (e) => {
+    let data = await [...projectData];
+    data[0].title = e.target.value;
     setProjectData(data);
   };
 
@@ -83,7 +90,11 @@ const ProjectForm = ({ addPost }) => {
           setProjectData(initialState);
         }}
       >
-        <select name="project" value={projectData.project} onChange={onChange}>
+        <select
+          name="project"
+          value={projectData.project}
+          onChange={onChangeProject}
+        >
           <option>* Select Project Category</option>
           {ProjectCategories.map((category, index) => (
             <option value={category} key={index}>
@@ -91,7 +102,14 @@ const ProjectForm = ({ addPost }) => {
             </option>
           ))}
         </select>
-
+        <br />
+        <textarea
+          name="title"
+          placeholder="Add Post Title"
+          value={projectData.title}
+          onChange={onChangeTitle}
+        />
+        <br />
         {projectData[0].articlebody.map((form, index) => {
           return (
             <div key={index}>

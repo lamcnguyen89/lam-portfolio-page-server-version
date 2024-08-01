@@ -6,10 +6,11 @@ import { connect } from "react-redux";
 import formatDate from "../../utils/formatDate";
 
 export const ProjectItem = ({
-  post: { _id, project, date, articlebody },
+  post: { _id, project, title, date, articlebody },
   showActions = true,
 }) => (
   <>
+    <h1>{title}</h1>
     <h4>{project}</h4>
     <div>Posted on {formatDate(date)}</div>
     {showActions && (
