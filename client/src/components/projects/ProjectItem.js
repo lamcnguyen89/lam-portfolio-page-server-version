@@ -10,13 +10,9 @@ export const ProjectItem = ({ post: { _id, project, date, articlebody } }) => (
     <h4>{project}</h4>
     <div>Posted on {formatDate(date)}</div>
     <div>
-      {articlebody.map((articlebody, index) => (
-        <div key={index}>
-          <img src={articlebody.articlebodyimage} />
-          <p>{articlebody.articlebodytext}</p>
-        </div>
-      ))}
+      <Link to={`/posts/${_id}`}>View Post</Link>
     </div>
+    <br />
   </>
 );
 
