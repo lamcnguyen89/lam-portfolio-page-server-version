@@ -20,13 +20,23 @@ app.use(
 //app.use(express.json({ extended: false }));
 
 // Create a single endpoint to test if the server works
-app.get("/", (req, res) => res.send("API Running"));
+//app.get("/", (req, res) => res.send("API Running"));
 
 // Define Routes
 app.use("/api/user", require("./routes/api/user"));
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/posts", require("./routes/api/posts"));
 app.use("/api/profile", require("./routes/api/profile"));
+
+// Serve static assets in production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("client/build"));
+
+  app.get("*", (res, req) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 // Take app variable and listen on a port
 const PORT = process.env.PORT || 666;
