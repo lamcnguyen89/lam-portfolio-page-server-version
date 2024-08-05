@@ -57,6 +57,11 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                   Contact
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/admin">
+                  Login
+                </Link>
+              </li>
               <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
             </ul>
           </div>

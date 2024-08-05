@@ -2,6 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const connectDB = require("./config/db");
+const path = require('path');
 
 const app = express();
 app.use(bodyParser.json({ limit: "50mb" }));
@@ -33,7 +34,7 @@ if (process.env.NODE_ENV === "production") {
   // Set static folder
   app.use(express.static("client/build"));
 
-  app.get("*", (res, req) => {
+  app.get("*", (req,res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
