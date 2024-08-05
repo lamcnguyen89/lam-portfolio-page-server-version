@@ -28,8 +28,8 @@ const AdminLogin = ({ login, isAuthenticated }) => {
 
   return (
     <>
-      <section className="container d-flex justify-content-center">
-        <h1 className="large text-primary">Sign In</h1>
+      <section className="container justify-content-center">
+        <h1>Sign In</h1>
         <p className="lead">
           <i className="fas fa-user" /> Sign Into Your Account
         </p>
@@ -43,6 +43,7 @@ const AdminLogin = ({ login, isAuthenticated }) => {
               onChange={onChange}
             />
           </div>
+          <br />
           <div className="form-group">
             <input
               type="password"
@@ -53,6 +54,7 @@ const AdminLogin = ({ login, isAuthenticated }) => {
               minLength="6"
             />
           </div>
+          <br />
           <input type="submit" className="btn btn-primary" value="Login" />
         </form>
       </section>

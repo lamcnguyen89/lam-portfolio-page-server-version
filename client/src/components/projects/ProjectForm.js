@@ -79,9 +79,8 @@ const ProjectForm = ({ addPost }) => {
 
   return (
     <div className="post-form">
-      <div className="bg-primary p">
-        <h3>Add Project</h3>
-      </div>
+        <h4>Create a new Post</h4>
+  
       <form
         className="form my-1"
         onSubmit={(e) => {
@@ -122,6 +121,7 @@ const ProjectForm = ({ addPost }) => {
                 onChange={(e) => handleFormChange(e, index)}
               />
               <input
+      
                 name="articlebodyimage"
                 label="Image"
                 type="file"
@@ -129,13 +129,14 @@ const ProjectForm = ({ addPost }) => {
                 accept=".jpeg, .png, .jpg"
                 onChange={(e) => handleFileUpload(e, index)}
               />
-              <button onClick={() => removeFields(index)}>Remove</button>
+              <button className="btn btn-danger" onClick={() => removeFields(index)}>Remove</button>
             </div>
           );
         })}
         <input type="submit" className="btn btn-dark my-1" value="Submit" />
       </form>
-      <button onClick={addFields}>Add More..</button>
+      <br />
+      <button className="btn btn-primary" onClick={addFields}>Add Another Paragraph and Image</button>
     </div>
   );
 };

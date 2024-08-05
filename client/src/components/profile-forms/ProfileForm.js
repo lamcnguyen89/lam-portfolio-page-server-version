@@ -87,7 +87,7 @@ const ProfileForm = ({
 
   return (
     <section className="container">
-      <h1 className="large text-primary">
+      <h1>
         {creatingProfile ? "Create Your Profile" : "Edit Your Profile"}
       </h1>
       <p className="lead">
@@ -101,7 +101,7 @@ const ProfileForm = ({
         <div className="form-group">
           <input
             type="text"
-            placeholder="Company"
+            placeholder="Status Student, Employee, Business"
             name="status"
             value={status}
             onChange={onChange}
@@ -110,6 +110,7 @@ const ProfileForm = ({
             Give us an idea of where you are at in your career
           </small>
         </div>
+        <br />
         <div className="form-group">
           <input
             type="text"
@@ -122,6 +123,7 @@ const ProfileForm = ({
             Could be your own company or one you work for
           </small>
         </div>
+        <br />
         <div className="form-group">
           <input
             type="text"
@@ -134,6 +136,7 @@ const ProfileForm = ({
             Could be your own or a company website
           </small>
         </div>
+        <br />
         <div className="form-group">
           <input
             type="text"
@@ -146,6 +149,7 @@ const ProfileForm = ({
             City & state suggested (eg. Boston, MA)
           </small>
         </div>
+        <br />
         <div className="form-group">
           <input
             type="text"
@@ -158,6 +162,7 @@ const ProfileForm = ({
             Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
           </small>
         </div>
+        <br />
         <div className="form-group">
           <input
             type="text"
@@ -171,6 +176,7 @@ const ProfileForm = ({
             username
           </small>
         </div>
+        <br />
         <div className="form-group">
           <textarea
             placeholder="A short bio of yourself"
@@ -180,6 +186,7 @@ const ProfileForm = ({
           />
           <small className="form-text">Tell us a little about yourself</small>
         </div>
+        <br />
 
         <div className="my-2">
           <button
@@ -251,7 +258,7 @@ const ProfileForm = ({
           </Fragment>
         )}
 
-        <input type="submit" className="btn btn-primary my-1" />
+        <input type="submit" className="btn btn-primary" />
         <Link className="btn btn-light my-1" to="/admindashboard">
           Go Back
         </Link>

@@ -46,6 +46,7 @@ const AddExperience = ({ addExperience }) => {
             required
           />
         </div>
+        <br />
         <div className="form-group">
           <input
             type="text"
@@ -56,6 +57,7 @@ const AddExperience = ({ addExperience }) => {
             required
           />
         </div>
+        <br />
         <div className="form-group">
           <input
             type="text"
@@ -65,6 +67,7 @@ const AddExperience = ({ addExperience }) => {
             onChange={onChange}
           />
         </div>
+        <br />
         <div className="form-group">
           <h4>From Date</h4>
           <input type="date" name="from" value={from} onChange={onChange} />
@@ -83,6 +86,7 @@ const AddExperience = ({ addExperience }) => {
             Current Job
           </p>
         </div>
+        <br />
         <div className="form-group">
           <h4>To Date</h4>
           <input
@@ -103,6 +107,7 @@ const AddExperience = ({ addExperience }) => {
             onChange={onChange}
           />
         </div>
+        <br />
         <input type="submit" className="btn btn-primary my-1" />
         <Link className="btn btn-light my-1" to="/admindashboard">
           Go Back

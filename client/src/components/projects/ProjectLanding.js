@@ -10,22 +10,29 @@ const ProjectLanding = () => {
 
   return (
     <>
-      {ProjectCategories.map((category, index) => (
-        <button
-          key={index}
-          onClick={() => {
-            setSeed(Math.random());
-            setCurrentCategory(category);
-          }}
-        >
-          {category}
-        </button>
-      ))}
+    <div className="container d-flex justify-content-center">
+      <div className="row align-items-center">
+          {ProjectCategories.map((category, index) => (
+            <div className="col">
+            <button
+              className="btn btn-primary"
+              key={index}
+              onClick={() => {
+                setSeed(Math.random());
+                setCurrentCategory(category);
+              }}
+            >
+              {category}
+            </button>
+            </div>
+          ))}
+      </div>
+    </div>
 
       {currentCategory !== "" && (
         <ProjectPage key={seed} category={currentCategory} />
       )}
-    </>
+  </>
   );
 };
 

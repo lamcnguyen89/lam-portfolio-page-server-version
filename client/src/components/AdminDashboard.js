@@ -19,7 +19,7 @@ const AdminDashboard = ({
 
   return (
     <section className="container">
-      <h1 className="large text-primary">Admin Dashboard</h1>
+      <h1>Admin Dashboard</h1>
       <p className="lead">
         <i className="fas fa-user" /> Welcome {user && user.name}
       </p>

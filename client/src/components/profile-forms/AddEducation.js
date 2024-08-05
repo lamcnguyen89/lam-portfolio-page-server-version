@@ -24,7 +24,7 @@ const AddEducation = ({ addEducation }) => {
 
   return (
     <section className="container">
-      <h1 className="large text-primary">Add Your Education</h1>
+      <h1>Add Your Education</h1>
       <p className="lead">
         <i className="fas fa-code-branch" /> Add any school or bootcamp that you
         have attended
@@ -47,6 +47,7 @@ const AddEducation = ({ addEducation }) => {
             required
           />
         </div>
+        <br />
         <div className="form-group">
           <input
             type="text"
@@ -57,6 +58,7 @@ const AddEducation = ({ addEducation }) => {
             required
           />
         </div>
+        <br />
         <div className="form-group">
           <input
             type="text"
@@ -66,6 +68,7 @@ const AddEducation = ({ addEducation }) => {
             onChange={onChange}
           />
         </div>
+        <br />
         <div className="form-group">
           <h4>From Date</h4>
           <input type="date" name="from" value={from} onChange={onChange} />
@@ -82,6 +85,7 @@ const AddEducation = ({ addEducation }) => {
             Current School
           </p>
         </div>
+        <br />
         <div className="form-group">
           <h4>To Date</h4>
           <input
